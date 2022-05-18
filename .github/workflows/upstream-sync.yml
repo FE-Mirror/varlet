@@ -22,20 +22,20 @@ jobs:
         ref:  main
         # REQUIRED if your upstream repo is private (see wiki)
         persist-credentials: false
-        fetch-depth: 0
+        #fetch-depth: 0
 
     # REQUIRED step
     # Step 2: run the sync action
     - name: Sync upstream changes
       id: sync
-      uses: aormsby/Fork-Sync-With-Upstream-action@v3.2
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.0
       with:
         target_sync_branch: main
         # REQUIRED 'target_repo_token' exactly like this!
         target_repo_token: ${{ secrets.GITHUB_TOKEN }}
         upstream_sync_branch: main
         upstream_sync_repo: varletjs/varlet
-        upstream_pull_args: '--allow-unrelated-histories'
+        #upstream_pull_args: '--allow-unrelated-histories'
       
     # Step 3: Display a sample message based on the sync output var 'has_new_commits'
     - name: New commits found
